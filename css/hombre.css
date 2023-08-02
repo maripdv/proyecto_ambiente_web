@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 150vh;
+  width: 100%;
+  background-image: url(../imagenes/principal.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.navbar-logo {
+  height: 70px;
+  width: auto;
+}
+
+a {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.superNav {
+  font-size: 13px;
+}
+
+.form-control {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+@media screen and (max-width: 540px) {
+  .centerOnMobile {
+    text-align: center;
+  }
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+  margin: 30px;
+
+}
+
+.main-content section {
+  display: flex;
+}
+
+.parte1 {
+  padding: 5px;
+  width: calc(60% - 10px);
+}
+
+.parte2 {
+  padding: 5px;
+  width: calc(40% - 10px);
+  margin: 20px 0;
+}
+
+.parte1 img {
+  height: 800px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.parte2 * {
+  margin: 10px 0;
+
+  font-family: 'Sen', sans-serif;
+}
+
+.parte2 h1 {
+  color: #d86a6a;
+  font-size: 35px;
+}
+
+.parte2 h1 span {
+  color: #d86a6a;
+  font-size: 25px;
+}
+
+.parte2 h4 {
+  color: #999;
+  font-weight: normal;
+
+}
+button {
+  border-style: none;
+  border-radius: 15px;
+  padding: 13px 20px;
+  color: #fff;
+  background-color: #d86a6a;
+  cursor: pointer;
+  font-size: 16px;
+}
+.parte2 button {
+  border-style: none;
+  border-radius: 15px;
+  padding: 13px 20px;
+  color: #fff;
+  background-color: #d86a6a;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+.content-container {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-card h5 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.product-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.product-card button {
+  margin-top: 10px;
+}
+
+.body-pedidos{
+  width: 100%;
+}
+
+
+.item-pedido{
+  display: flex;
+  border: 1px #ccc solid;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+.pedido-img{
+  width: 200px;
+}
+.pedido-img img{
+  width: 100%;
+}
+
+.pedido-detalle{
+  padding: 10px;
+  width: calc(100% - 220px);
+}
+
+.pedido-detalle h3,.pedido-detalle p{
+  margin: 5px;
+}
+
+input{
+  padding: 10px;
+  font-size: 15px;
+  background-color: #fefefe;
+  border: 1px solid #ccc;
+  width: calc(100% - 62px);
+  font-family: 'Sen', sans-serif;
+}
+
+input:placeholder{
+  color: #ccc;
+}
+
+.ipt-procom{
+  width: 250px;
+  margin-bottom: 5px;
+}
+
