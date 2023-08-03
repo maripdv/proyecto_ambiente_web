@@ -1,49 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Hombre</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio de sesion</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/hombre.css" />
-    <style type="text/css">
-        form {
-            max-width: 460px;
-            width: calc(100% - 40px);
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-        }
 
-        form h3 {
-            margin: 5px 0;
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-        }
-
-        form input {
-            padding: 7px 10px;
-            width: calc(100% - 22px);
-            margin-bottom: 10px;
-        }
-
-        form button {
-            margin: 10px 15px;
-            width: calc(100%);
-            background-color: blue;
-        }
-
-        form p{
-            margin: 0;
-            margin-bottom: 5px;
-            color: red;
-            font-size: 12px;
-        }
-    </style>
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <nav id="navbar" class="navbar navbar-expand-lg static-top navbar-light p-3 shadow-sm">
+<nav id="navbar" class="navbar navbar-expand-lg static-top navbar-light p-3 shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../index.php">
                 <img src="imagenes/logo.png" alt="Logo de Gear Shop" class="navbar-logo">
@@ -53,32 +28,74 @@
             </button>
         </div>
     </nav>
-    <div class="main-content">
-        <div class="content-page">
-            <form action="servicios/login.php" method="POST">
-                <h3>Iniciar Sesión</h3>
-                <input type="text" name="emausu" placeholder="Correo">
-                <input type="password" name="pasusu" placeholder="Contraseña">
-                <?php
-                    if(isset($_GET["e"])){
-                        switch ($_GET["e"]) {
-                            case '1':
-                                echo "<p>Error de conexion</p>";
-                                break;
-                            case '2':
-                                echo "<p>Correo invalido</p>";
-                                break;
-                            case '3':
-                                echo "<p>Contraseña invalida</p>";
-                                break;
-                        }
-                    }
-                ?>
-                <button type="submit">Ingresar</button>
-            </form>
-        </div>
+
+    <div class="main">
+
+
+
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="imagenes/logo.png" alt="sing up image"></figure>
+                        <a href="registro.php" class="signup-image-link">Crear una cuenta</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Iniciar Sesion</h2>
+                        <form action="servicios/login.php" method="POST" class="register-form" id="login-form">
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="emausu" id="your_name" placeholder="Your Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="pasusu" id="your_pass" placeholder="Password" />
+                            </div>
+
+                            <?php
+                            if(isset($_GET["e"])){
+
+                                switch ($_GET["e"]) {
+        
+                                    case '1':
+        
+                                        echo "<p>Error de conexion</p>";
+        
+                                        break;
+        
+                                    case '2':
+        
+                                        echo "<p>Correo invalido</p>";
+        
+                                        break;
+        
+                                    case '3':
+        
+                                        echo "<p>Contraseña invalida</p>";
+        
+                                        break;
+        
+                                }
+        
+                            }
+                            ?>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Ingresar" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
-</body>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
