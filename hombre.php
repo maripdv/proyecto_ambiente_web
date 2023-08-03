@@ -16,31 +16,12 @@ session_start();
     <?php
     include_once("layouts/_main-header.php");
     ?>
-    <div class="main-content">
-        <section>
-            <div class="parte1">
-                <img id="idimg" src="" alt="">
-            </div>
-            <div class="parte2">
-                <h3 id="idtitle"></h3>
-                <h1 id="idprice"><span></span></h1>
-
-                <h4 id="iddesc"></h4>
-
-                <button onclick="iniciar_compra()">Comprar</button>
-            </div>
-        </section>
-    </div>
     <h2>Camisas Hombre</h2>
     <div class="content-container" id="space-list">
 
-       
+        <!-- Repite el mismo código para los siguientes productos -->
     </div>
-
-    <script type="text/javascript" src="js/main-scripts"></script>
-    <script type="text/javascript">
-        var p = '<?php echo $_GET["p"]; ?>';
-    </script>
+    <script type="text/javascript" src="js/main-scripts.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $.ajax({
@@ -51,20 +32,13 @@ session_start();
                     console.log(data);
                     let html = "";
                     for (var i = 0; i < data.datos.length; i++) {
-                        if (data.datos[i].codpro == p) {
-                            document.getElementById("idimg").src = "../imagenes/" + data.datos[i].rutimapro;
-                            document.getElementById("idtitle").innerHTML = data.datos[i].nompro;
-                            document.getElementById("idprice").innerHTML = formato_precio(data.datos[i].prepro);
-                            document.getElementById("iddesc").innerHTML = data.datos[i].despro;
-                        }
                         html +=
                             '<div class="product-card">' +
-                            '<a href="producto.php?p=' + data.datos[i].codpro + '">' +
+                            '<a href="../producto.php?p=' + data.datos[i].codpro + '">' +
                             '<img src="../imagenes/' + data.datos[i].rutimapro + '">' +
                             '<h5>' + data.datos[i].nompro + '</h5>' +
                             '<p>' + formato_precio(data.datos[i].prepro) + '</p>' +
                             '<button class="btn btn-primary">Agregar al carrito</button>' +
-                            '</a>' +
                             '</div>';
                     }
                     document.getElementById("space-list").innerHTML = html;
@@ -79,34 +53,6 @@ session_start();
             let svalor = valor.toString();
             let array = svalor.split(".");
             return "$" + array[0] + ".<span>" + array[1] + "</span>";
-        }
-
-        function iniciar_compra() {
-            $.ajax({
-                url: "../servicios/compra/validar_inicio_compra.php",
-                type: "POST",
-                data: {
-                    codpro: p
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.state) {
-                        alert(data.detail);
-                    } else {
-                        alert(data.detail);
-                        if (data.open_login) {
-                            open_login();
-                        }
-                    }
-                },
-                error: function(error) {
-                    console.error(error);
-                }
-            });
-        }
-
-        function open_login() {
-            window.location.href = "login.php";
         }
     </script>
 

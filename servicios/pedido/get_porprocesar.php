@@ -9,7 +9,7 @@ function estado2texto($id)
             return 'Por procesar';
             break;
         case '2':
-            return 'Orden completeda';
+            return 'Orden completada';
             break;
         default:
             break;

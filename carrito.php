@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['codusu'])) {
-    header("Location: ../index.php");
+    header("Location: index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ if (!isset($_SESSION['codusu'])) {
     <title>Hombre</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="css/hombre.css" />
     <script src="https://www.paypal.com/sdk/js?client-id=AQomRl1-OF1f9O43UVn6u3tAUHu0h_1Lns5_beT0F430ZZ3DFsHvJUio_VXHjESelMhq2MigStqjpBTH&currency=USD"></script>
     </script>

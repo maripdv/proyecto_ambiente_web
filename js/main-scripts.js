@@ -1,4 +1,24 @@
+$(document).ready(function () {
+    $("#idbusqueda").keyup(function (e) {
+        if (e.keyCode == 13) {
+            search_producto();
+        }
+    });
+});
 
-function search_producto(){
-    alert("Buscando producto");
+function search_producto() {
+    window.location.href = "busqueda.php?text="+$("#idbusqueda").val();
 }
+
+$(document).ready(function () {
+    $("#idbusqueda2").keyup(function (e) {
+        if (e.keyCode == 13) {
+            search_producto();
+        }
+    });
+});
+
+function search_producto2() {
+    window.location.href = "busqueda.php?text="+$("#idbusqueda").val();
+}
+
