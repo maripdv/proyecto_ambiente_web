@@ -45,18 +45,19 @@ if (!isset($_SESSION['codusu'])) {
                         for (var i = 0; i < data.datos.length; i++) {
                             html +=
                                 '<div class="item-pedido">' +
-                                '<div class="pedido-img">' +
-                                '<img src="imagenes/' + data.datos[i].rutimapro + '">' +
-                                '</div>' +
+                                    '<div class="pedido-img">' +
+                                        '<img src="imagenes/' + data.datos[i].rutimapro + '">' +
+                                    '</div>' +
                                 '<div class="pedido-detalle">' +
-                                '<h3>' + data.datos[i].nompro + '</h3>' +
-                                '<p><b>Precio:</b> ' + data.datos[i].prepro + '</p>' +
-                                '<p><b>Fecha:</b> ' + data.datos[i].fecped + '</p>' +
-                                '<p><b>Estado:</b> ' + data.datos[i].estado + '</p>' +
-                                '<p><b>Direccion:</b> ' + data.datos[i].dirusuped + ' </p>' +
-                                '<p><b>Telefono:</b>' + data.datos[i].telusuped + ' </p>' +
+                                    '<h3>' + data.datos[i].nompro + '</h3>' +
+                                    '<p><b>Precio:</b> ' + data.datos[i].prepro + '</p>' +
+                                    '<p><b>Fecha:</b> ' + data.datos[i].fecped + '</p>' +
+                                    '<p><b>Estado:</b> ' + data.datos[i].estado + '</p>' +
+                                    '<p><b>Direccion:</b> ' + data.datos[i].dirusuped + ' </p>' +
+                                    '<p><b>Telefono:</b>' + data.datos[i].telusuped + ' </p>' +
+                                    '<button class="btn-detele-cart" onclick="delete_product('+data.datos[i].codped+')">Eliminar</button>' +
                                 '</div>' +
-                                '</div>';
+                            '</div>';
                             sumaMonto += parseFloat(data.datos[i].prepro);
                         }
 
@@ -71,10 +72,34 @@ if (!isset($_SESSION['codusu'])) {
         </script>
         <div id="paypal-button-container"></div>
         <script>
+
+            function delete_product(codped){
+                $.ajax({
+                    url: "servicios/pedido/delete_pedido.php",
+                    type: "POST",
+                    data: {
+                        codped: codped
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        if (data.state) {
+                            alert("Producto eliminado");
+                            window.location.reload();
+                        } else {
+                            alert(data.detail);
+                        }
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            }
+
+
             function procesar_compra() {
                 let dirusu = document.getElementById("dirusu").value;
                 let telusu = $("#telusu").val();
-                if (dirusu == "" || telusu == "") {
+                if (dirusu === "" || telusu === "") {
                     alert("Debe ingresar todos los campos");
                 } else {
                     $.ajax({
@@ -87,12 +112,11 @@ if (!isset($_SESSION['codusu'])) {
                         success: function(data) {
                             console.log(data);
                             if (data.state) {
-                                alert("Compra realizada con exito");
+                                alert("Compra realizada con éxito");
                                 window.location.href = "pedido.php";
                             } else {
                                 alert(data.detail);
                             }
-
                         },
                         error: function(error) {
                             console.error(error);
@@ -100,6 +124,18 @@ if (!isset($_SESSION['codusu'])) {
                     });
                 }
             }
+
+            function validateFields() {
+                let dirusu = document.getElementById("dirusu").value;
+                let telusu = $("#telusu").val();
+                if (dirusu === "" || telusu === "") {
+                    alert("Debe ingresar todos los campos");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
             paypal.Buttons({
                 style: {
                     color: 'blue',
@@ -122,19 +158,42 @@ if (!isset($_SESSION['codusu'])) {
                     });
                 },
                 onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        procesar_compra();
-                        window.location.href = "index.php";
-                        alert('Pago realizado');
-                        console.log(details);
-                    });
+                    if (validateFields()) {
+                        return actions.order.capture().then(function(details) {
+                            alert('Pago realizado');
+                            procesar_compra(); // Llama a procesar_compra solo si los campos están llenos
+                            window.location.href = "index.php";
+                            console.log(details);
+                        });
+                    }
                 },
                 onCancel: function(data) {
                     alert('Pago cancelado');
                     console.log(data);
                 }
             }).render('#paypal-button-container');
+
+            // Deshabilitar el botón de PayPal inicialmente
+            let paypalButton = document.querySelector("#paypal-button-container > *");
+            paypalButton.disabled = true;
+
+            // Agregar un evento de escucha para habilitar el botón de PayPal si los campos están llenos
+            document.getElementById("dirusu").addEventListener("input", checkFields);
+            document.getElementById("telusu").addEventListener("input", checkFields);
+
+            function checkFields() {
+                let dirusu = document.getElementById("dirusu").value;
+                let telusu = $("#telusu").val();
+                if (dirusu !== "" && telusu !== "") {
+                    paypalButton.disabled = false;
+                } else {
+                    paypalButton.disabled = true;
+                }
+            }
         </script>
+
+
+
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
 </body>

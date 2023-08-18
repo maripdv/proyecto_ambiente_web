@@ -186,3 +186,10 @@ input:placeholder{
   margin-bottom: 5px;
 }
 
+
+.btn-detele-cart{
+  padding: 5px 0;
+  text-decoration: underline;
+  color: blue;
+  background: transparent;
+}
