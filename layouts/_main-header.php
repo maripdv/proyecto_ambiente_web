@@ -26,17 +26,37 @@
                     <a class="nav-link mx-2 text-uppercase active" aria-current="page" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="html/deportiva.php">Deportiva</a>
+                    <a class="nav-link mx-2 text-uppercase" href="deportiva.php">Deportiva</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link mx-2 text-uppercase" href="hombre.php">Hombre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="html/mujer.php">Mujer</a>
+                    <a class="nav-link mx-2 text-uppercase" href="mujer.php">Mujer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2 text-uppercase" href="html/acercade.php">Acerca de</a>
+                    <a class="nav-link mx-2 text-uppercase" href="acercade.php">Acerca de</a>
                 </li>
+                <?php
+                // Lista blanca de correos electrónicos permitidos
+                $correosPermitidos = array("correo@example.com");
+
+                // Verifica si el usuario está autenticado
+                if (isset($_SESSION["emausu"])) {
+                    // Verifica si el correo electrónico del usuario está en la lista blanca
+                    if (in_array($_SESSION["emausu"], $correosPermitidos)) {
+                        // El usuario está autorizado, muestra los enlaces del menú
+                ?>
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase" href="agregarProducto.php"><i class="fa-solid fa-plus"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-2 text-uppercase" href="upd_del_produ.php"><i class="fa-regular fa-pen-to-square"></i></a>
+                        </li>
+                <?php
+                    }
+                }
+                ?>
                 <?php
                 if (isset($_SESSION["codusu"])) {
                     echo '<li class="nav-item">
@@ -68,7 +88,7 @@
                 ?>
                 <li class="nav-item">
                     <a class="nav-link mx-2 text-uppercase" href="carrito.php"><i class="fa-solid fa-cart-shopping me-1"></i>
-                        </a>
+                    </a>
                 </li>
             </ul>
         </div>

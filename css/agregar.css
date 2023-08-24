@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 150vh;
+    width: 100%;
+    background-image: url(../imagenes/principal.png);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .navbar-logo {
+    height: 70px;
+    width: auto;
+  }
+  
+  a {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .superNav {
+    font-size: 13px;
+  }
+  
+  .form-control {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  @media screen and (max-width: 540px) {
+    .centerOnMobile {
+      text-align: center;
+    }
+  }
+  

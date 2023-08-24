@@ -193,3 +193,13 @@ input:placeholder{
   color: blue;
   background: transparent;
 }
+
+footer {
+  position: sticky;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+ 
+}

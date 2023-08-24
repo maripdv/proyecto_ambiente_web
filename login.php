@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<nav id="navbar" class="navbar navbar-expand-lg static-top navbar-light p-3 shadow-sm">
+    <nav id="navbar" class="navbar navbar-expand-lg static-top navbar-light p-3 shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="../index.php">
                 <img src="imagenes/logo.png" alt="Logo de Gear Shop" class="navbar-logo">
@@ -55,30 +55,28 @@
                             </div>
 
                             <?php
-                            if(isset($_GET["e"])){
+                            if (isset($_GET["e"])) {
 
                                 switch ($_GET["e"]) {
-        
+
                                     case '1':
-        
+
                                         echo "<p>Error de conexion</p>";
-        
+
                                         break;
-        
+
                                     case '2':
-        
+
                                         echo "<p>Correo invalido</p>";
-        
+
                                         break;
-        
+
                                     case '3':
-        
+
                                         echo "<p>Contraseña invalida</p>";
-        
+
                                         break;
-        
                                 }
-        
                             }
                             ?>
                             <div class="form-group form-button">
@@ -92,7 +90,9 @@
         </section>
 
     </div>
-
+    <?php
+    include_once("layouts/_main-footer.php");
+    ?>
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>

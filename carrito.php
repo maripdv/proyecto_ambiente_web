@@ -26,9 +26,9 @@ if (!isset($_SESSION['codusu'])) {
             <h3>Mis pedidos</h3>
             <div class="body-pedidos" id="space-list">
             </div>
-            <input class="ipt-procom" type="text" id="dirusu" placeholder="Direccion">
+            <input class="ipt-procom" type="text" id="dirusu" placeholder="Direccion" required>
             <br>
-            <input class="ipt-procom" type="text" id="telusu" placeholder="Telefono">
+            <input class="ipt-procom" type="text" id="telusu" placeholder="Telefono" required>
             <br>
             <!--button onclick="procesar_compra()">Procesar Compra</button>-->
         </div>

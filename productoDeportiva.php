@@ -5,7 +5,7 @@ session_start();
 <html>
 
 <head>
-    <title>Hombre</title>
+    <title>Mujer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -31,7 +31,7 @@ session_start();
             </div>
         </section>
     </div>
-    <h2>Camisas Hombre</h2>
+    <h2>Productos Relaciondos</h2>
     <div class="content-container" id="space-list">
 
 
@@ -48,7 +48,7 @@ session_start();
                 url: "../servicios/producto/get_all_products.php",
                 type: "POST",
                 data: {
-                    codcat: 1
+                    codcat: 3
                 },
                 success: function(data) {
                     console.log(data);
@@ -67,7 +67,7 @@ session_start();
                 if (data.datos[i].codcat == productCodcat) {  
                         html +=
                             '<div class="product-card">' +
-                            '<a href="producto.php?p=' + data.datos[i].codpro + '">' +
+                            '<a href="productoDeportiva.php?p=' + data.datos[i].codpro + '">' +
                             '<img src="../imagenes/' + data.datos[i].rutimapro + '">' +
                             '<h5>' + data.datos[i].nompro + '</h5>' +
                             '<p>' + formato_precio(data.datos[i].prepro) + '</p>' +

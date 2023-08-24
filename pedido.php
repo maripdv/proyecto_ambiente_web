@@ -66,6 +66,9 @@ if (!isset($_SESSION['codusu'])) {
             });
         </script>
     </div>
+    <?php
+    include_once("layouts/_main-footer.php");
+    ?>
     
 </body>
 

@@ -44,3 +44,27 @@ CREATE TABLE PEDIDO(
     telusuped varchar(50) not null,
     PRIMERY KEY (codped)
 );
+
+/* Creando tabla categoria */
+CREATE TABLE CATEGORIA(
+    codcat int not null auto_increment,
+    nomcat varchar(50) not null,
+    descat varchar(100) not null,
+    CONSTRAINT pk_categoria PRIMARY KEY (codcat)
+);
+
+/*Agregar categoria a tabla producto*/
+ALTER TABLE PRODUCTO ADD codcat int null;
+
+/*Establecer la conexion entre tablas*/
+ALTER TABLE PRODUCTO ADD CONSTRAINT fk_categoria FOREIGN KEY (codcat) REFERENCES CATEGORIA(codcat);
+
+
+-- Insertar categoría "hombre"
+INSERT INTO CATEGORIA (nomcat, descat) VALUES ('hombre', 'Categoría para productos dirigidos a hombres');
+
+-- Insertar categoría "deportiva"
+INSERT INTO CATEGORIA (nomcat, descat) VALUES ('deportiva', 'Categoría para productos deportivos');
+
+-- Insertar categoría "mujer"
+INSERT INTO CATEGORIA (nomcat, descat) VALUES ('mujer', 'Categoría para productos dirigidos a mujeres');

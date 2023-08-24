@@ -33,6 +33,7 @@ a {
     }
 }
 
+/* Estilos para el título y la descripción */
 .content {
     border-radius: 5px;
     text-align: center;
@@ -44,11 +45,6 @@ h1 {
     font-size: 24px;
     color: #333;
     margin-top: 20px;
-}
-
-p {
-    font-size: 16px;
-    color: #666;
 }
 
 h2 {
@@ -82,4 +78,12 @@ h2 {
     font-size: 16px;
     color: #333;
     margin-top: 10px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
 }
